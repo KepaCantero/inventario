@@ -1,0 +1,26 @@
+<h1>
+  {{title}}
+</h1>
+<a class="ui large labeled icon button" href="/recetas/create">
+  <i class="add icon"></i>
+  Nueva Receta
+</a>
+<div class="ui divided link items">
+  <table id="my_table" class="ui striped table">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Descripcion</th>
+      </tr>
+    </thead>
+    {{#each recetas_list}}
+    <tr>
+
+      <td> <a class="item" href={{this.url}}>
+          {{this.nombre}} </a></td>
+      <td> {{this.descripcion}} </td>
+      </a>
+    </tr>
+    {{/each}}
+  </table>
+</div>

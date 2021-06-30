@@ -1,0 +1,87 @@
+<div class="ui top attached block header">
+  <h2>
+    {{title}}
+  </h2>
+</div>
+<div class="ui attached bottom segment">
+  <form class="ui form" method="POST" action="" enctype="multipart/form-data">
+    <div class="field">
+      <label>
+        Item Name
+      </label>
+      <input type="text" name="name" placeholder="Item Name" value="{{#if item}}{{item.name}}{{/if}}" />
+    </div>
+    <div class="field">
+      <label>
+        Description
+      </label>
+      <input type="text" name="description" placeholder="Description" value="{{#if item}}{{item.description}}{{/if}}" />
+    </div>
+    <div class="field">
+      <label>
+        Category
+      </label>
+      <div class="ui selection dropdown">
+        <input type="hidden" name="category" />
+        <i class="dropdown icon"></i>
+        <div class="default text">
+          Category
+        </div>
+        <div class="menu">
+          {{#each categories}}
+            <div class="item" data-value={{this.id}}>
+              {{this.name}}
+            </div>
+          {{/each}}
+        </div>
+      </div>
+    </div>
+    <div class="field">
+      <label>
+        Price
+      </label>
+      <div class="ui labeled input">
+        <div class="ui label">
+          $
+        </div>
+        <input type="text" name="price" placeholder="0.99" value="{{#if item}}{{item.price}}{{/if}}" />
+      </div>
+    </div>
+    <div class="field">
+      <label>
+        # in stock
+      </label>
+      <input
+        type="number"
+        min="0"
+        name="numberInStock"
+        placeholder="# in stock"
+        value="{{#if item}}{{item.numberInStock}}{{/if}}"
+      />
+    </div>
+    <div class="field">
+      <label>{{#if item.imageFilename}}Change{{else}}Upload{{/if}} Image</label>
+      <input type="file" name="image" />
+    </div>
+    <button class="ui button" type="submit">
+      Submit
+    </button>
+    <div class="ui error message"></div>
+  </form>
+</div>
+<script src="/javascript/itemFormValidator.js"></script>
+{{#if setCategory}}
+  <script>
+    $(document).ready(() => {
+      $('.ui.selection.dropdown')
+        .dropdown('set selected', "{{item.category}}");
+    });
+  </script>
+{{/if}}
+{{#if validate}}
+  <script>
+    $(document).ready(() => {
+      $('.ui.form').form('validate form');
+    });
+  </script>
+{{/if}}

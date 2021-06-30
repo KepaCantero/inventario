@@ -1,0 +1,55 @@
+<div class="ui top attached block header">
+  <h2>
+    {{title}}
+  </h2>
+</div>
+<div class="ui attached bottom segment">
+  <form class="ui form" method="POST" action="" enctype="multipart/form-data">
+    <div class="field">
+      <label>
+        Insumo
+      </label>
+      <input type="text" name="insumo" placeholder="Nombre Insumo" value="{{#if item}}{{item.insumo}}{{/if}}" />
+    </div>
+    <div class="field">
+      <label>
+        stock
+      </label>
+      <input type="number" min="0" name="stock" placeholder="# in stock" value="{{#if item}}{{item.stock}}{{/if}}" />
+    </div>
+    <div class="field">
+      <label>
+        entradas
+      </label>
+      <input type="number" min="0" name="entradas" placeholder="total entradas"
+        value="{{#if item}}{{item.entradas}}{{/if}}" />
+    </div>
+    <div class="field">
+      <label>
+        salidas
+      </label>
+      <input type="number" min="0" name="salidas" placeholder="total salidas"
+        value="{{#if item}}{{item.salidas}}{{/if}}" />
+    </div>
+    <button class="ui button" type="submit">
+      Submit
+    </button>
+    <div class="ui error message"></div>
+  </form>
+</div>
+<script src="/javascript/itemFormValidator.js"></script>
+{{#if setCategory}}
+<script>
+  $(document).ready(() => {
+    $('.ui.selection.dropdown')
+      .dropdown('set selected', "{{item.category}}");
+  });
+</script>
+{{/if}}
+{{#if validate}}
+<script>
+  $(document).ready(() => {
+    $('.ui.form').form('validate form');
+  });
+</script>
+{{/if}}

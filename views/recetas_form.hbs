@@ -1,0 +1,91 @@
+<div class="ui top attached block header">
+  <h2>
+    {{title}}
+  </h2>
+</div>
+<div class="ui attached bottom segment">
+  <form id="receta_from" class="ui form" method="POST" action="" enctype="multipart/form-data">
+    <div class="field">
+      <label>
+        Item Name
+      </label>
+      <input type="text" name="name" placeholder="Item Name" value="{{#if receta}}{{receta.nombre}}{{/if}}" />
+    </div>
+    <div class="field">
+      <label>
+        Description
+      </label>
+      <input type="text" name="description" placeholder="Description"
+        value="{{#if receta}}{{receta.descripcion}}{{/if}}" />
+    </div>
+    <div class="ingrediente_opcional">
+      <div class="field">
+        <label>
+          Ingrediente
+        </label>
+        <div class="ui selection dropdown">
+          <input type="hidden" name="ingrediente" />
+          <i class="dropdown icon"></i>
+          <div class="default text">
+            Ingrediente
+          </div>
+          <div class="menu">
+            {{#each insumos}}
+            <div class="item" data-value={{this.id}}>
+              {{this.insumo}}
+            </div>
+            {{/each}}
+          </div>
+        </div>
+      </div>
+      <div class="field">
+        <label>
+          Cantidad
+        </label>
+        <input type="Number" name="cantidad" placeholder="Cantidad" value="{{#if item}}{{item.cantidad}}{{/if}}" />
+      </div>
+      <div class="field">
+        <label>
+          Unidad
+        </label>
+        <div class="ui selection dropdown">
+          <input type="hidden" name="unidad" />
+          <i class="dropdown icon"></i>
+          <div class="default text">
+            Unidad
+          </div>
+          <div class="menu">
+            {{#each unidades}}
+            <div class="item" data-value={{this.id}}>
+              {{this.descripcion}}
+            </div>
+            {{/each}}
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+<button id="añade_ingredientes_btn">Anade mas ingredientes</button>
+<button class="ui button" type="submit">
+  Submit
+</button>
+<div class="ui error message"></div>
+</form>
+</div>
+<script>
+  $('.ui.dropdown').dropdown({ on: 'hover' });
+  $("#añade_ingredientes_btn").click(function (e) {
+    e.preventDefault();
+
+
+    /*var itm = document.getElementsByClassName("ingrediente_opcional");
+    console.log(itm);
+    var cln = itm[0].cloneNode(true);
+    document.getElementById("receta_from").appendChild(cln);*/
+    //$(".ingrediente_opcional").clone().append("#receta_from");
+    $('.ingrediente_opcional').contents().clone().appendTo('#receta_from');
+    $('.ui.dropdown').dropdown({ on: 'hover' });
+    //ocation.reload();
+
+  });
+</script>

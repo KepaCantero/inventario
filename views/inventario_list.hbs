@@ -1,0 +1,36 @@
+<h1>
+  {{title}}
+</h1>
+<a class="ui large labeled icon button" href="/inventario/create">
+  <i class="add icon"></i>
+  Añadir nuevo Insulso
+</a>
+<div class="ui divided link items">
+  <table id="my_table" class="ui celled table">
+    <thead>
+      <tr>
+        <th>Insumo</th>
+        <th>Stock</th>
+      </tr>
+
+    </thead>
+    {{#each items}}
+    {{#if this.empty_stock}}
+    <tr class="warning">
+      {{else}}
+    <tr>
+      {{/if}}
+      <td> <a class="item" href={{this.url}}>
+          {{this.insumo}} </a></td>
+      <td>
+        {{#if this.empty_stock}}
+        <i class="attention icon"></i>
+        {{/if}}
+        {{this.stock}}
+      </td>
+
+      </a>
+    </tr>
+    {{/each}}
+  </table>
+</div>

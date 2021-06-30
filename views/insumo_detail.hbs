@@ -1,0 +1,52 @@
+<div class="ui top attached block header">
+  <div class="ui two column grid">
+    <div class="column">
+      <h2>
+        {{title}}
+      </h2>
+
+    </div>
+    <div class="column">
+      <img class="ui small right floated rounded image" src={{item.imageUrl}} />
+    </div>
+  </div>
+</div>
+<div class="ui attached segment">
+  {{item.description}}
+</div>
+<div class="ui attached very padded segment">
+  <div class="ui statistics">
+    <div class="ui horizontal statistic">
+      <div class="value">
+        {{item.stock}}
+      </div>
+      <div class="label">
+        in stock
+      </div>
+    </div>
+    <div class="ui horizontal statistic">
+      <div class="value">
+        {{item.entradas}}
+      </div>
+      <div class="label">
+        entradas
+      </div>
+    </div>
+    <div class="ui horizontal statistic">
+      <div class="value">
+        {{item.salidas}}
+      </div>
+      <div class="label">
+        salidas
+      </div>
+    </div>
+  </div>
+</div>
+<div class="ui two bottom attached buttons">
+  <a href="{{item.url}}/update" class="ui primary basic button">
+    Update Item
+  </a>
+  <a href="{{item.url}}/delete" class="ui negative basic button">
+    Delete Item
+  </a>
+</div>

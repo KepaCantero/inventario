@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+{{! prettier-ignore }}
+<html>
+
+<head>
+  <title>{{title}}</title>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="/dist/semantic.min.css">
+  <script src="/dist/semantic.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="/styles/style.css">
+</head>
+
+<body>
+  <div class="ui fixed menu">
+    <div class="ui text container">
+      <a class="item" href="/inventory">
+        <i class="home icon"></i>
+        Home
+      </a>
+      <a class="item" href="/inventario">
+        <i class="list icon"></i>
+        Inventario
+      </a>
+      <a class="item" href="/recetas">
+        <i class="archive icon"></i>
+        Recetas
+      </a>
+      <a class="item" href="/salidas">
+        <i class="calendar alternate outline icon"></i>
+        Salidas
+      </a>
+    </div>
+  </div>
+  <div class="ui main text container">
+    {{{body}}}
+  </div>
+</body>
+
+</html>

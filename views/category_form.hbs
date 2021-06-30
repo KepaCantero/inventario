@@ -1,0 +1,55 @@
+<div class="ui top attached block header">
+  <h2>
+    {{title}}
+  </h2>
+</div>
+<div class="ui attached bottom segment">
+  <form class="ui form" method="POST" action="" enctype="multipart/form-data">
+    <div class="field">
+      <label>
+        Category Name
+      </label>
+      <input
+        type="text"
+        name="name"
+        placeholder="Category Name"
+        value="{{#if category}}{{category.name}}{{/if}}"
+      />
+    </div>
+    <div class="field">
+      <label>
+        Description
+      </label>
+      <input
+        type="text"
+        name="description"
+        placeholder="Description"
+        value="{{#if category}}{{category.description}}{{/if}}"
+      />
+    </div>
+    <div class="field">
+      <div class="ui toggle checkbox">
+        <input type="checkbox" {{#if category.donut}}checked{{/if}} name="donut" />
+        <label>
+          Category for donuts
+        </label>
+      </div>
+    </div>
+    <div class="field">
+      <label>{{#if category.imageFilename}}Change{{else}}Upload{{/if}} Image</label>
+      <input type="file" name="image" />
+    </div>
+    <button class="ui button" type="submit">
+      Submit
+    </button>
+    <div class="ui error message"></div>
+  </form>
+</div>
+<script src="/javascript/categoryFormValidator.js"></script>
+{{#if validate}}
+  <script>
+    $(document).ready(() => {
+      $('.ui.form').form('validate form')
+    });
+  </script>
+{{/if}}

@@ -1,0 +1,41 @@
+{
+  "name": "odin-donut-inventory",
+  "version": "0.0.0",
+  "engines": {
+    "node": "16.2.0"
+  },
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www",
+    "dev": "nodemon ./bin/www",
+    "build:css": "cd semantic && npx gulp build && cd ../"
+  },
+  "dependencies": {
+    "async": "^3.2.0",
+    "compression": "^1.7.4",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "dotenv": "^10.0.0",
+    "ejs": "^3.1.6",
+    "express": "^4.16.4",
+    "express-async-errors": "^3.1.1",
+    "express-session": "^1.17.2",
+    "express-validator": "^6.11.1",
+    "fomantic-ui": "^2.8.7",
+    "hbs": "^4.1.2",
+    "helmet": "^4.6.0",
+    "http-errors": "~1.6.3",
+    "mongoose": "^5.13.0",
+    "morgan": "~1.9.1",
+    "multer": "^1.4.2",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
+    "uniqid": "^5.3.0"
+  },
+  "devDependencies": {
+    "eslint": "^7.27.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.23.4",
+    "nodemon": "^2.0.7"
+  }
+}

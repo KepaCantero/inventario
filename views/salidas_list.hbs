@@ -1,0 +1,28 @@
+<h1>
+  {{title}}
+</h1>
+<a class="ui large labeled icon button" href="/salidas/create">
+  <i class="add icon"></i>
+  Nueva Salida
+</a>
+<div class="ui divided link items">
+  <table id="my_table" class="ui striped table">
+    <thead>
+      <tr>
+        <th>Fecha</th>
+        <th>Receta</th>
+        <th>Cantidad</th>
+      </tr>
+
+    </thead>
+    {{#each salidas_list}}
+    <tr>
+      <td> <a class="item" href={{this.url}}>
+          {{this.fecha}} </a></td>
+      <td> {{this.receta_id.nombre}} </td>
+      <td> {{this.cantidad}} </td>
+      </a>
+    </tr>
+    {{/each}}
+  </table>
+</div>
