@@ -1,6 +1,20 @@
-<div class="main-page">
-  <img class="ui medium image main-image" src="/images/placer_saludable.png" />
-  <h1 class="main-title">
-    Placer Saludable
-  </h1>
+<div class="main-page"></div>
+<img class="ui medium image main-image" src="/images/placer_saludable.png" />
+<h1 class="main-title">
+  Placer Saludable
+</h1>
+{{user}}
+{{#if user}}
+<h1>WELCOME BACK {{user.username}}
+</h1>
+{{else}}
+<h1>please log in</h1>
+<form action="/log-in" method="POST">
+  <label for="username">Username</label>
+  <input name="username" placeholder="username" type="text" />
+  <label for="password">Password</label>
+  <input name="password" type="password" />
+  <button>Log In</button>
+</form>
+{{/if}}
 </div>

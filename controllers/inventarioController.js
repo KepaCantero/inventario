@@ -4,9 +4,11 @@ const {
 } = require('express-validator');
 
 const InventarioSchema = require('../models/inventario');
+const UnidadesSchema = require("../models/unidades");
 
 exports.item_list = async (req, res) => {
   const items = InventarioSchema.find({})
+  .populate("unidad")
   .lean()
   .exec(function (err, items) {
     items.forEach(function (item, index) {
@@ -23,13 +25,15 @@ exports.item_list = async (req, res) => {
 
 
 exports.inventario_create_get = async (req, res) => {
+  const unidades = await UnidadesSchema.find({});
   res.render('inventario_form', {
-      title: 'Añadir nuevo Insumo'
+      title: 'Añadir nuevo Insumo',
+      unidades
   });
 };
 
 exports.insumo_detail = async (req, res) => {
-  const item = await InventarioSchema.findById(req.params.id);
+  const item = await InventarioSchema.findById(req.params.id).populate("unidad");
   res.render('insumo_detail', {
       title: item.insumo,
       item
@@ -39,6 +43,8 @@ exports.insumo_detail = async (req, res) => {
 
 
 exports.inventario_create_post = [
+
+
   body('insumo').exists({
       checkFalsy: true
   }).trim().escape(),
@@ -72,8 +78,15 @@ exports.inventario_create_post = [
   .isInt({
       min: 0
   }),
+  body('unidad')
+  .exists({
+      checkFalsy: true
+  })
+  .trim()
+  .escape(),
 
   async (req, res) => {
+
       const errors = validationResult(req);
       console.log(errors);
       // eslint-disable-next-line object-curly-newline
@@ -81,17 +94,18 @@ exports.inventario_create_post = [
           insumo,
           stock,
           entradas,
-          salidas
+          salidas,
+          unidad
       } = req.body;
       const item = new InventarioSchema({
           insumo,
           stock,
           entradas,
           salidas,
+          unidad
       });
       if (!errors.isEmpty()) {
           // Validation errors. Rerender form with immediate validation
-          const categories = await Category.find({});
           res.render('inventario_form', {
               title: 'New Item',
               item
@@ -141,10 +155,14 @@ exports.insumo_update_post = [
       checkFalsy: true
   })
   .trim()
-  .escape()
-  .isInt({
-      min: 0
-  }),
+  .escape(),
+
+  body('unidad')
+  .exists({
+      checkFalsy: true
+  })
+  .trim()
+  .escape(),
 
   async (req, res) => {
       const errors = validationResult(req);
@@ -154,13 +172,15 @@ exports.insumo_update_post = [
           insumo,
           stock,
           entradas,
-          salidas
+          salidas,
+          unidad
       } = req.body;
       const item = new InventarioSchema({
           insumo: insumo,
           stock: stock,
           entradas: entradas,
           salidas: salidas,
+          unidad: unidad,
           _id: req.params.id,
       });
       if (!errors.isEmpty()) {

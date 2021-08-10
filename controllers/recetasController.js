@@ -78,6 +78,8 @@ exports.receta_detail = async (req, res) => {
   var ingredientes = [];
   receta_ingredientes_item.forEach(function (item) {
     var ingrediente = [];
+    console.info("receta detail");
+    console.info(item);
     ingrediente.medida = item.medida_id.descripcion;
     ingrediente.cantidad = item.qty;
     ingrediente.nombre = item.ingrediente_id.insumo;
@@ -106,7 +108,9 @@ exports.receta_create_post = [
   async (req, res) => {
     // eslint-disable-next-line object-curly-newline
     let receta_id = await saveReceta(req);
+    console.info(req.body.ingrediente);
     for (const index in req.body.ingrediente) {
+
       var ingrediente_id = req.body.ingrediente[index];
       var qty = req.body.cantidad[index];
       var medida_id = req.body.unidad[index];
@@ -116,19 +120,10 @@ exports.receta_create_post = [
         qty,
         ingrediente_id,
       });
-      await receta_row.save(function (err, receta_ingrediente) {
-        if (err) console.log(err);
-        else {
-          var receta_ingrediente_id = receta_ingrediente._id;
-          console.log(
-            "successfully added question with id",
-            receta_ingrediente_id
-          );
+      receta_row.save();
 
-        }
-      });
-      res.redirect("/recetas");
     }
+    res.redirect("/recetas");
   },
 ];
 

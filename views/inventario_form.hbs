@@ -31,6 +31,25 @@
       <input type="number" min="0" name="salidas" placeholder="total salidas"
         value="{{#if item}}{{item.salidas}}{{/if}}" />
     </div>
+    <div class="field">
+      <label>
+        Unidad
+      </label>
+      <div class="ui selection dropdown">
+        <input type="hidden" name="unidad" />
+        <i class="dropdown icon"></i>
+        <div class="default text">
+          Unidad
+        </div>
+        <div class="menu">
+          {{#each unidades}}
+          <div class="item" data-value={{this.id}}>
+            {{this.descripcion}}
+          </div>
+          {{/each}}
+        </div>
+      </div>
+    </div>
     <button class="ui button" type="submit">
       Submit
     </button>

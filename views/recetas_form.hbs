@@ -63,9 +63,10 @@
           </div>
         </div>
       </div>
+      <span class="ui button remove">Remove</span>
     </div>
 </div>
-<button id="añade_ingredientes_btn">Anade mas ingredientes</button>
+<button id="anade_ingredientes_btn">Anade mas ingredientes</button>
 <button class="ui button" type="submit">
   Submit
 </button>
@@ -74,7 +75,7 @@
 </div>
 <script>
   $('.ui.dropdown').dropdown({ on: 'hover' });
-  $("#añade_ingredientes_btn").click(function (e) {
+  $("#anade_ingredientes_btn").click(function (e) {
     e.preventDefault();
 
 
@@ -85,7 +86,13 @@
     //$(".ingrediente_opcional").clone().append("#receta_from");
     $('.ingrediente_opcional').contents().clone().appendTo('#receta_from');
     $('.ui.dropdown').dropdown({ on: 'hover' });
-    //ocation.reload();
+    //location.reload();
 
+  });
+  $('#receta_from').on('click', ".remove", function () {
+    e.preventDefault();
+    $(this).parents().remove();
+    //$(this).parent().remove();
+    //$(this).remove();
   });
 </script>
