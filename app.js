@@ -27,7 +27,7 @@ require('./config/passport')(passport)
 
 const LocalStrategy = require("passport-local").Strategy;
 
-//const entradasRouter = require('./routes/entradas');
+const entradasRouter = require('./routes/entradas');
 const salidasRouter = require('./routes/salidas');
 
 const app = express();
@@ -78,14 +78,15 @@ app.use(express.static(path.join(__dirname, 'semantic')));
 
 app.use('/', indexRouter);
 
-app.use('/inventory', inventoryRouter);
 app.use('/inventory/items', itemRouter);
 app.use('/inventory/categories', categoryRouter);
 app.use('/inventario', inventarioRouter);
 app.use('/recetas', recetasRouter);
 
 app.use('/salidas', salidasRouter);
+app.use('/entradas', entradasRouter);
 app.use('/users',usersRouter);
+app.use('/logout', usersRouter);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

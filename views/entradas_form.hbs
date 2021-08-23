@@ -1,0 +1,52 @@
+<div class="ui top attached block header">
+  <h2>
+    {{title}}
+  </h2>
+</div>
+<div class="ui attached bottom segment">
+  <form id="receta_from" class="ui form" method="POST" action="" enctype="multipart/form-data">
+    <div class="field">
+      <label>
+        Fecha
+      </label>
+      <input type="date" name="fecha" placeholder="Fecha" />
+    </div>
+    <div class="field">
+      <label>
+        Insumo
+      </label>
+      <div class="ui selection dropdown">
+        <input type="hidden" name="_id" />
+        <i class="dropdown icon"></i>
+        <div class="default text">
+          Insumo
+        </div>
+        <div class="menu">
+          {{#each insumos}}
+          <div class="item" data-value={{this._id}}>
+            {{this.insumo}}
+          </div>
+          {{/each}}
+        </div>
+      </div>
+    </div>
+    <div class="field">
+      <label>
+        Cantidad
+      </label>
+      <input type="Number" name="cantidad" placeholder="Cantidad" value="{{#if item}}{{item.cantidad}}{{/if}}" />
+    </div>
+
+</div>
+<button class="ui button" type="submit">
+  Submit
+</button>
+<div class="ui error message"></div>
+</form>
+</div>
+<script>
+  $(document).ready(() => {
+    $('.ui.selection.dropdown')
+      .dropdown('set selected', "{{item.category}}");
+  });
+</script>

@@ -18,55 +18,70 @@
       <input type="text" name="description" placeholder="Description"
         value="{{#if receta}}{{receta.descripcion}}{{/if}}" />
     </div>
-    <div class="ingrediente_opcional">
-      <div class="field">
-        <label>
-          Ingrediente
-        </label>
-        <div class="ui selection dropdown">
-          <input type="hidden" name="ingrediente" />
-          <i class="dropdown icon"></i>
-          <div class="default text">
-            Ingrediente
-          </div>
-          <div class="menu">
-            {{#each insumos}}
-            <div class="item" data-value={{this.id}}>
-              {{this.insumo}}
+    <table id="my_table" class="ui striped table">
+      <thead>
+        <tr>
+          <th>Ingrediente</th>
+          <th>Cantidad</th>
+          <th>Unidad</th>
+        </tr>
+      </thead>
+      <tr>
+        <div class="ingrediente_opcional">
+          <td>
+            <div class="field">
+
+              <div class="ui selection dropdown">
+                <input type="hidden" name="ingrediente" />
+                <i class="dropdown icon"></i>
+                <div class="default text">
+                  Ingrediente
+                </div>
+                <div class="menu">
+                  {{#each insumos}}
+                  <div class="item" data-value={{this.id}}>
+                    {{this.insumo}}
+                  </div>
+                  {{/each}}
+                </div>
+              </div>
             </div>
-            {{/each}}
-          </div>
-        </div>
-      </div>
-      <div class="field">
-        <label>
-          Cantidad
-        </label>
-        <input type="Number" name="cantidad" placeholder="Cantidad" value="{{#if item}}{{item.cantidad}}{{/if}}" />
-      </div>
-      <div class="field">
-        <label>
-          Unidad
-        </label>
-        <div class="ui selection dropdown">
-          <input type="hidden" name="unidad" />
-          <i class="dropdown icon"></i>
-          <div class="default text">
-            Unidad
-          </div>
-          <div class="menu">
-            {{#each unidades}}
-            <div class="item" data-value={{this.id}}>
-              {{this.descripcion}}
+          </td>
+          <td>
+            <div class="field">
+              <input type="Number" name="cantidad" placeholder="Cantidad"
+                value="{{#if item}}{{item.cantidad}}{{/if}}" />
             </div>
-            {{/each}}
-          </div>
+          </td>
+          <td>
+            <div class="field">
+              <div class="ui selection dropdown">
+                <input type="hidden" name="unidad" />
+                <i class="dropdown icon"></i>
+                <div class="default text">
+                  Unidad
+                </div>
+                <div class="menu">
+                  {{#each unidades}}
+                  <div class="item" data-value={{this.id}}>
+                    {{this.descripcion}}
+                  </div>
+                  {{/each}}
+                </div>
+              </div>
+          </td>
         </div>
-      </div>
-      <span class="ui button remove">Remove</span>
-    </div>
+        <td>
+          <button class="remove">Remove</button>
+      </tr>
+    </table>
+
+    <button id="anade_ingredientes_btn">Añade mas ingredientes</button>
+
+
 </div>
-<button id="anade_ingredientes_btn">Anade mas ingredientes</button>
+</div>
+
 <button class="ui button" type="submit">
   Submit
 </button>
@@ -77,22 +92,11 @@
   $('.ui.dropdown').dropdown({ on: 'hover' });
   $("#anade_ingredientes_btn").click(function (e) {
     e.preventDefault();
-
-
-    /*var itm = document.getElementsByClassName("ingrediente_opcional");
-    console.log(itm);
-    var cln = itm[0].cloneNode(true);
-    document.getElementById("receta_from").appendChild(cln);*/
-    //$(".ingrediente_opcional").clone().append("#receta_from");
-    $('.ingrediente_opcional').contents().clone().appendTo('#receta_from');
+    $('#my_table').append(' <tr> <div class="ingrediente_opcional"> <td> <div class="field"> <div class="ui selection dropdown"> <input type="hidden" name="ingrediente" /> <i class="dropdown icon"></i> <div class="default text"> Ingrediente </div> <div class="menu"> {{#each insumos}} <div class="item" data-value={{this.id}}> {{this.insumo}} </div> {{/each}} </div> </div> </div> </td> <td> <div class="field"> <input type="Number" name="cantidad" placeholder="Cantidad" value="{{#if item}}{{item.cantidad}}{{/if}}" /> </div> </td> <td> <div class="field"> <div class="ui selection dropdown"> <input type="hidden" name="unidad" /> <i class="dropdown icon"></i> <div class="default text"> Unidad </div> <div class="menu"> {{#each unidades}} <div class="item" data-value={{this.id}}> {{this.descripcion}} </div> {{/each}} </div> </div> </td> </div> <td> <button class="remove">Remove</button> </tr>');
     $('.ui.dropdown').dropdown({ on: 'hover' });
-    //location.reload();
+  });
+  $('#my_table').on('click', '.remove', function () {
 
-  });
-  $('#receta_from').on('click', ".remove", function () {
-    e.preventDefault();
-    $(this).parents().remove();
-    //$(this).parent().remove();
-    //$(this).remove();
-  });
+    $(this).closest('tr').remove();
+  })
 </script>
