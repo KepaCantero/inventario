@@ -19,7 +19,7 @@ const categoryRouter = require('./routes/categories');
 const inventarioRouter = require('./routes/inventario');
 const recetasRouter = require('./routes/recetas');
 const usersRouter = require('./routes/users');
-
+const shell = require('shelljs');
 const session = require("express-session");
 const passport = require("passport");
 
@@ -38,7 +38,8 @@ mongoose.connect('mongodb://localhost:27017/server', { useNewUrlParser: true, us
 const db = mongoose.connection;
 mongoose.set('useFindAndModify', false);
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
-
+console.info("executing user");
+shell.exec('./crearUser.js');
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');

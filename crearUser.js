@@ -6,6 +6,7 @@
 require('dotenv').config();
 var async = require('async');
 var mongoose = require('mongoose');
+const item = require('./models/item');
 var User = require('./models/user');
 
 
@@ -17,45 +18,26 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 var items = [];
 
+async function userCreate() {
 
-
-function userCreate(username, password){
-
-  var user = new User({
-    username,
-    password
-  });
-
-  user.save((err) => {
-    if (err) {
-    console.info(err);
-      return;
-    }
-    console.log(`New Inventario: ${user}`);
-  });
 
 }
 
+function userCreate() {
+  return new Promise(function (resolve, reject) {
+    try {
+      User.create( { _id: "70e18ae1b3fa572e8339c37e", "username" : "laura", "password" : "laura1981" } );
+      resolve();
+      }
+      catch (e) {
+      reject();
 
-function createUsuario() {
-  userCreate(
-    'kepa',
-    'kepa'
-    );
+     }
+  })
 }
 
-
-
-async.series(
-  [createUsuario],
-  // Optional callback
-  (err) => {
-    if (err) {
-      console.log(`FINAL ERR: ${err}`);
-    } else {
-      console.log('All done! check mongo');
-    }
-    // All done, disconnect from database
-    mongoose.connection.close();
-  }
-);
+userCreate().then(function() {
+  mongoose.connection.close();
+}).catch(function(e) {
+  mongoose.connection.close();
+})
