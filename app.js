@@ -2,7 +2,7 @@ require('dotenv').config();
 
 const createError = require('http-errors');
 const express = require('express');
-const flash = require('connect-flash');
+//const flash = require('connect-flash');
 require('express-async-errors');
 
 const path = require('path');
@@ -18,14 +18,14 @@ const itemRouter = require('./routes/items');
 const categoryRouter = require('./routes/categories');
 const inventarioRouter = require('./routes/inventario');
 const recetasRouter = require('./routes/recetas');
-const usersRouter = require('./routes/users');
-const shell = require('shelljs');
-const session = require("express-session");
-const passport = require("passport");
+//const usersRouter = require('./routes/users');
+//const shell = require('shelljs');
+//const session = require("express-session");
+//const passport = require("passport");
 
-require('./config/passport')(passport)
+//require('./config/passport')(passport)
 
-const LocalStrategy = require("passport-local").Strategy;
+//const LocalStrategy = require("passport-local").Strategy;
 
 const entradasRouter = require('./routes/entradas');
 const salidasRouter = require('./routes/salidas');
@@ -38,14 +38,15 @@ mongoose.connect('mongodb://localhost:27017/server', { useNewUrlParser: true, us
 const db = mongoose.connection;
 mongoose.set('useFindAndModify', false);
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
-console.info("executing user");
-shell.exec('./crearUser.js');
+//console.info("executing user");
+//shell.exec('./crearUser.js');
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
-app.use(flash());
 
-app.use(session({
+//app.use(flash());
+
+/*app.use(session({
   secret : 'secret',
   resave : true,
   saveUninitialized : true
@@ -64,11 +65,11 @@ app.use(
     contentSecurityPolicy: false,
   })
 );
-
-app.use(session({ secret: "cats", resave: false, saveUninitialized: true }));
+*/
+/*app.use(session({ secret: "cats", resave: false, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
-
+*/
 app.use(compression());
 app.use(morgan('dev'));
 app.use(express.json());
@@ -86,8 +87,8 @@ app.use('/recetas', recetasRouter);
 
 app.use('/salidas', salidasRouter);
 app.use('/entradas', entradasRouter);
-app.use('/users',usersRouter);
-app.use('/logout', usersRouter);
+//app.use('/users',usersRouter);
+//app.use('/logout', usersRouter);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
