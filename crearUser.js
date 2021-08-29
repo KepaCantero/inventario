@@ -11,7 +11,7 @@ var User = require('./models/user');
 
 
 var mongoDB = process.env.MONGODB_URI;
-mongoose.connect('mongodb://localhost:27017/server', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect('mongodb+srv://laura:laura1981@cluster0.xuvtr.mongodb.net/Inventario?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true });
 mongoose.Promise = global.Promise;
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
@@ -37,7 +37,7 @@ function userCreate() {
 }
 
 userCreate().then(function() {
-  mongoose.connection.close();
+  //mongoose.connection.close();
 }).catch(function(e) {
-  mongoose.connection.close();
+  //mongoose.connection.close();
 })
