@@ -31,10 +31,10 @@ const entradasRouter = require('./routes/entradas');
 const salidasRouter = require('./routes/salidas');
 
 const app = express();
-
+//
 // Set up mongoose connection
 const mongoDB = "process.env.MONGODB_URI";
-mongoose.connect('mongodb://localhost:27017/server', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect('mongodb+srv://laura:laura1981@cluster0.xuvtr.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true });
 const db = mongoose.connection;
 mongoose.set('useFindAndModify', false);
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
