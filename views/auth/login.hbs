@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+{{! prettier-ignore }}
+<html>
+
+<head>
+    <title>{{title}}</title>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/dist/semantic.min.css">
+    <script src="/dist/semantic.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/styles/style.css">
+</head>
+<style type="text/css">
+    .column {
+        max-width: 450px;
+    }
+</style>
+
+<body>
+    <div class="ui middle aligned center aligned grid">
+        <div class="column">
+            <img class="ui medium circular bordered centered image" src="/images/placer_saludable.png" />
+
+            {{#if error}}
+            <div class="ui error message">
+                {{error.msg}}
+            </div>
+            {{/if}}
+
+            <form class="ui small form" method="POST" action="">
+                <div class="ui stacked segment">
+                    <div class="field">
+                        <label>Nombre de usuario</label>
+                        <input type="text" name="username" placeholder="Nombre de usuario">
+                    </div>
+                    <div class="field">
+                        <label>Contraseña</label>
+                        <input type="password" name="password" placeholder="Contraseña">
+                    </div>
+                </div>
+                <button class="ui fluid large teal submit button" type="submit">Entrar</button>
+            </form>
+
+        </div>
+    </div>
+</body>
+
+</html>

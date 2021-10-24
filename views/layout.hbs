@@ -5,7 +5,7 @@
 <head>
   <title>{{title}}</title>
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="/dist/semantic.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" />
   <script src="/dist/semantic.min.js"></script>
   <link rel="stylesheet" type="text/css" href="/styles/style.css">
 </head>
@@ -29,7 +29,10 @@
         <i class="calendar alternate outline icon"></i>
         Entradas
       </a>
-
+      <a class="item" href="/logout">
+        <i class="sign-out icon"></i>
+        Salir
+      </a>
     </div>
   </div>
   <div class="ui main text container">
@@ -38,7 +41,3 @@
 </body>
 
 </html>
-{{!-- {{c <a class="item" href="/users/logout">
-  <i class="fighter jet icon"></i>
-  Logout
-</a>}} --}}

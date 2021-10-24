@@ -15,7 +15,7 @@ exports.item_list = async (req, res) => {
       items[index].empty_stock = (items[index].stock <=0);
       items[index].url = "/inventario/" + items[index]._id;
       })
-      res.render('inventario_list', {
+      res.render('inventario/inventario_list', {
         title: 'Productos actualmente in Stock',
         items
     });
@@ -26,7 +26,7 @@ exports.item_list = async (req, res) => {
 
 exports.inventario_create_get = async (req, res) => {
   const unidades = await UnidadesSchema.find({});
-  res.render('inventario_form', {
+  res.render('inventario/inventario_form', {
       title: 'Añadir nuevo Insumo',
       unidades
   });
@@ -34,7 +34,7 @@ exports.inventario_create_get = async (req, res) => {
 
 exports.insumo_detail = async (req, res) => {
   const item = await InventarioSchema.findById(req.params.id).populate("unidad");
-  res.render('insumo_detail', {
+  res.render('insumo/insumo_detail', {
       title: item.insumo,
       item
   });
@@ -106,7 +106,7 @@ exports.inventario_create_post = [
       });
       if (!errors.isEmpty()) {
           // Validation errors. Rerender form with immediate validation
-          res.render('inventario_form', {
+          res.render('inventario/inventario_form', {
               title: 'New Item',
               item
           });
@@ -120,7 +120,7 @@ exports.inventario_create_post = [
 exports.insumo_update_get = async (req, res) => {
 
   const item = await InventarioSchema.findById(req.params.id);
-  res.render('inventario_form', {
+  res.render('inventario/inventario_form', {
       title: `Update ${item.name}`,
       item
   });
@@ -185,7 +185,7 @@ exports.insumo_update_post = [
       });
       if (!errors.isEmpty()) {
         // Validation errors. Rerender form with immediate validation
-        res.render('inventario_form', {
+        res.render('inventario/inventario_form', {
           title: `Update ${item.name}`,
           item,
         });
@@ -201,7 +201,7 @@ exports.insumo_update_post = [
 
 exports.insumo_delete_get = async (req, res) => {
   const item = await InventarioSchema.findById(req.params.id);
-  res.render('insumo_delete', {
+  res.render('insumo/insumo_delete', {
       title: `Delete ${item.insumo}`,
       item
   });

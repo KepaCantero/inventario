@@ -4,10 +4,7 @@
       <h2>
         {{title}}
       </h2>
-      <div class="meta">
-        Category:
-        {{item.category.name}}
-      </div>
+
     </div>
     <div class="column">
       <img class="ui small right floated rounded image" src={{item.imageUrl}} />
@@ -19,19 +16,24 @@
 </div>
 <div class="ui attached very padded segment">
   <div class="ui statistics">
-    <div class="ui horizontal statistic">
-      <div class="value">
-        {{item.numberInStock}}
-      </div>
-      <div class="label">
-        in stock
-      </div>
-    </div>
-    <div class="ui horizontal statistic">
-      <div class="value">
-        {{item.formattedPrice}}
-      </div>
-    </div>
+    <table id="my_table" class="ui celled striped table">
+      <thead>
+        <tr>
+          <th>En Stock</th>
+          <th>Entradas</th>
+          <th>Salidas</th>
+          <th>Unidad</th>
+        </tr>
+      </thead>
+      <tr>
+
+        <td> {{item.stock}}</td>
+        <td> {{item.entradas}}</td>
+        <td>{{item.salidas}}</td>
+        <td>{{item.unidad.descripcion}}</td>
+
+      </tr>
+    </table>
   </div>
 </div>
 <div class="ui two bottom attached buttons">
@@ -41,4 +43,6 @@
   <a href="{{item.url}}/delete" class="ui negative basic button">
     Delete Item
   </a>
+</div>
+
 </div>

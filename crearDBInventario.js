@@ -9,7 +9,7 @@ var mongoose = require('mongoose');
 var InventarioSchema = require('./models/inventario');
 
 var mongoDB = process.env.MONGODB_URI;
-mongoose.connect('mongodb://localhost:27017/server', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect('mongodb+srv://laura:laura1981@cluster0.xuvtr.mongodb.net/Inventario?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true });
 mongoose.Promise = global.Promise;
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
@@ -50,7 +50,7 @@ function rellenarInsumo(cb) {
           10000,
           0,
           0,
-          '60cdb50e6698fb7b9ff79ca4',
+          '612ba77eb1eeaaec7670d760',
           callback
         );
       },function (callback) {
@@ -59,7 +59,7 @@ function rellenarInsumo(cb) {
           10000,
           0,
           0,
-          '60cdb50e6698fb7b9ff79ca4',
+          '612ba77eb1eeaaec7670d760',
           callback
         );
       },function (callback) {
@@ -68,7 +68,7 @@ function rellenarInsumo(cb) {
           10000,
           0,
           0,
-          '60cdb50e6698fb7b9ff79ca4',
+          '612ba780b1eeaaec7670d763',
           callback
         );
       },function (callback) {
@@ -77,7 +77,7 @@ function rellenarInsumo(cb) {
           1000,
           0,
           0,
-          '60cdb50e6698fb7b9ff79ca5',
+          '612ba780b1eeaaec7670d763',
           callback
         );
       },function (callback) {
@@ -86,16 +86,16 @@ function rellenarInsumo(cb) {
           1000,
           0,
           0,
-          '60cdb50e6698fb7b9ff79ca5',
+          '612ba780b1eeaaec7670d763',
           callback
         );
       },function (callback) {
         InsumoCrear(
-          'coco rallada',
+          'coco rallado',
           10000,
           0,
           0,
-          '60cdb50e6698fb7b9ff79ca4',
+          '612ba77eb1eeaaec7670d760',
           callback
         );
       },function (callback) {
@@ -104,7 +104,7 @@ function rellenarInsumo(cb) {
           10000,
           0,
           0,
-          '60cdb50e6698fb7b9ff79ca4',
+          '612ba77eb1eeaaec7670d760',
           callback
         );
       },function (callback) {
@@ -113,7 +113,7 @@ function rellenarInsumo(cb) {
           10000,
           0,
           0,
-          '60cdb50e6698fb7b9ff79ca4',
+          '612ba77eb1eeaaec7670d760',
           callback
         );
       },function (callback) {
@@ -122,7 +122,7 @@ function rellenarInsumo(cb) {
           10000,
           0,
           0,
-          '60cdb50e6698fb7b9ff79ca4',
+          '612ba77eb1eeaaec7670d760',
           callback
         );
       },
@@ -132,7 +132,7 @@ function rellenarInsumo(cb) {
           10000,
           0,
           0,
-          '60cdb50e6698fb7b9ff79ca4',
+          '612ba77eb1eeaaec7670d760',
           callback
         );
       },
@@ -142,17 +142,7 @@ function rellenarInsumo(cb) {
           10000,
           0,
           0,
-          '60cdb50e6698fb7b9ff79ca4',
-          callback
-        );
-      },
-      function (callback) {
-        InsumoCrear(
-          'agave',
-          10000,
-          0,
-          0,
-          '60cdb50e6698fb7b9ff79ca4',
+          '612ba77eb1eeaaec7670d760',
           callback
         );
       },
@@ -162,7 +152,7 @@ function rellenarInsumo(cb) {
           10000,
           0,
           0,
-          '60cdb50e6698fb7b9ff79ca4',
+          '612ba77eb1eeaaec7670d760',
           callback
         );
       },
@@ -172,7 +162,7 @@ function rellenarInsumo(cb) {
           10000,
           0,
           0,
-          '60cdb50e6698fb7b9ff79ca4',
+          '612ba77eb1eeaaec7670d760',
           callback
         );
       },
@@ -182,7 +172,7 @@ function rellenarInsumo(cb) {
           1000,
           0,
           0,
-          '60cdb50e6698fb7b9ff79ca5',
+          '612ba780b1eeaaec7670d765',
           callback
         );
       },

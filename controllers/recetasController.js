@@ -46,7 +46,7 @@ exports.receta_delete_get = async (req, res) => {
   })
     .populate("medida_id")
     .populate("ingrediente_id");
-  res.render("receta_delete", {
+  res.render("recetas/receta_delete", {
     title: `Delete ${receta_ingredientes_item.nombre}`,
     receta_ingredientes_item,
   });
@@ -54,13 +54,13 @@ exports.receta_delete_get = async (req, res) => {
 
 exports.recetas_list = async (req, res) => {
   const recetas_list = await RecetaSchema.find({});
-  res.render("recetas_list", { title: "Lista de Recetas", recetas_list });
+  res.render("recetas/recetas_list", { title: "Lista de Recetas", recetas_list });
 };
 
 exports.recetas_create_get = async (req, res) => {
   const insumos = await InventarioSchema.find({});
   const unidades = await UnidadesSchema.find({});
-  res.render("recetas_form", {
+  res.render("recetas/recetas_form", {
     title: "Añadir nueva Receta",
     insumos,
     unidades,
@@ -78,15 +78,13 @@ exports.receta_detail = async (req, res) => {
   var ingredientes = [];
   receta_ingredientes_item.forEach(function (item) {
     var ingrediente = [];
-    console.info("receta detail");
-    console.info(item);
     ingrediente.medida = item.medida_id.descripcion;
     ingrediente.cantidad = item.qty;
     ingrediente.nombre = item.ingrediente_id.insumo;
     ingredientes.push(ingrediente);
   });
 
-  res.render("receta_detail", { title: receta.nombre, receta, ingredientes });
+  res.render("recetas/receta_detail", { title: receta.nombre, receta, ingredientes });
 };
 function saveReceta(req) {
   return new Promise(function (resolve, reject) {
@@ -145,7 +143,7 @@ exports.receta_update_get = async (req, res) => {
   });
   const insumos = await InventarioSchema.find({});
   const unidades = await UnidadesSchema.find({});
-  res.render("recetas_form", {
+  res.render("recetas/recetas_form", {
     title: receta.nombre,
     receta,
     ingredientes,

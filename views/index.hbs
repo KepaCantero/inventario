@@ -1,20 +1,24 @@
-<div class="main-page"></div>
-<img class="ui medium image main-image" src="/images/placer_saludable.png" />
-<h1 class="main-title">
-  Placer Saludable
-</h1>
-{{user}}
-{{#if user}}
-<h1>WELCOME BACK {{user.username}}
-</h1>
-{{else}}
-<h1>please log in</h1>
-<form action="/log-in" method="POST">
-  <label for="username">Username</label>
-  <input name="username" placeholder="username" type="text" />
-  <label for="password">Password</label>
-  <input name="password" type="password" />
-  <button>Log In</button>
-</form>
-{{/if}}
-</div>
+<!DOCTYPE html>
+{{! prettier-ignore }}
+<html>
+
+<head>
+  <title>{{title}}</title>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="/dist/semantic.min.css">
+  <script src="/dist/semantic.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="/styles/style.css">
+</head>
+
+<body>
+  <img class="ui medium circular image main-image" src="/images/placer_saludable.png" />
+  <div class="ui center aligned icon header">
+    <h1>
+      Placer Saludable
+    </h1>
+    <a href="/login" class="ui secondary basic button">
+      Entrar
+    </a>
+  </div>
+
+</body>

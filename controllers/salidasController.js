@@ -20,7 +20,7 @@ exports.salida_delete_get = async (req, res) => {
       salida.fecha = day + "/" + month + "/" + year
       salida.url = "/salidas/" + salida._id
 
-      res.render("salida_delete", {
+      res.render("salidas/salida_delete", {
         title: `Delete Salida`,
         salida,
       })
@@ -80,7 +80,7 @@ exports.salida_detail = async (req, res) => {
       salida.url = "/salidas/" + salida._id
       console.info(salida)
 
-      res.render("salida_detail", {title: "Detalle salida", salida})
+      res.render("salidas/salida_detail", {title: "Detalle salida", salida})
     })
 }
 
@@ -97,13 +97,13 @@ exports.salidas_list = async (req, res) => {
         salidas_list[index].fecha = day + "/" + month + "/" + year
         salidas_list[index].url = "/salidas/" + item._id
       })
-      res.render("salidas_list", {title: "Lista de Salidas", salidas_list})
+      res.render("salidas/salidas_list", {title: "Lista de Salidas", salidas_list})
     })
 }
 
 exports.salidas_create_get = async (req, res) => {
   const recetas = await RecetasSchema.find({})
-  res.render("salidas_form", {title: "Añadir nueva Receta", recetas})
+  res.render("salidas/salidas_form", {title: "Añadir nueva Receta", recetas})
 }
 
 function BuscarIngredientes(receta_id) {
@@ -222,7 +222,7 @@ exports.salida_update_get = async (req, res) => {
   })
   const insumos = await InventarioSchema.find({})
   const unidades = await UnidadesSchema.find({})
-  res.render("recetas_form", {
+  res.render("salidas/recetas_form", {
     title: receta.nombre,
     receta,
     ingredientes,

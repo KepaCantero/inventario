@@ -1,0 +1,31 @@
+<div class="ui top attached negative message">
+  <div class="header">
+    Seguro quieres eliminarla?
+  </div>
+  <div class="ui statistics">
+    <table id="my_table" class="ui celled striped table">
+      <thead>
+        <tr>
+          <th>Fecha</th>
+          <th>Receta</th>
+          <th>Cantidad</th>
+        </tr>
+      </thead>
+      <tr>
+
+        <td> {{salida.fecha}}</td>
+        <td> {{salida.receta_id.nombre}}</td>
+        <td>{{salida.cantidad}}</td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<form method="POST" action="" class="ui two bottom attached buttons">
+  <a href="/salidas" class="ui secondary basic button">
+    Cancel
+  </a>
+  <button type="submit" class="ui negative basic button">
+    Eliminar
+  </button>
+</form>

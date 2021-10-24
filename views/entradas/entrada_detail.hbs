@@ -1,0 +1,39 @@
+<div class="ui top attached block header">
+  <div class="ui two column grid">
+    <div class="column">
+      <h2>
+        {{title}}
+      </h2>
+
+    </div>
+  </div>
+</div>
+<div class="ui attached very padded segment">
+  <div class="ui statistics">
+    <table id="my_table" class="ui celled striped table">
+      <thead>
+        <tr>
+          <th>Fecha</th>
+          <th>Insumo</th>
+          <th>Cantidad</th>
+        </tr>
+      </thead>
+      <tr>
+
+        <td> {{entrada.fecha}}</td>
+        <td> {{entrada.insumo_id.insumo}}</td>
+        <td>{{entrada.cantidad}}</td>
+        </a>
+      </tr>
+    </table>
+  </div>
+</div>
+<div class="ui two bottom attached buttons">
+  <a href="{{entrada.url}}/delete" class="ui negative basic button">
+    Eliminar entrada
+  </a>
+</div>
+
+
+
+</div>

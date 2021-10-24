@@ -20,7 +20,7 @@ exports.entrada_delete_get = async (req, res) => {
       entrada.fecha = day + "/" + month + "/" + year
       entrada.url = "/entradas/" + entrada._id
 
-      res.render("entrada_delete", {
+      res.render("entradas/entrada_delete", {
         title: `Delete Entrada`,
         entrada,
       })
@@ -66,7 +66,7 @@ exports.entrada_detail = async (req, res) => {
       entrada.fecha = day + "/" + month + "/" + year
       entrada.url = "/entradas/" + entrada._id
 
-      res.render("entrada_detail", {title: "Detalle entrada", entrada})
+      res.render("entradas/entrada_detail", {title: "Detalle entrada", entrada})
     })
 }
 
@@ -84,7 +84,7 @@ exports.entradas_list = async (req, res) => {
         entradas_list[index].url = "/entradas/" + item._id
       })
       console.info(entradas_list)
-      res.render("entradas_list", {title: "Lista de Entradas", entradas_list})
+      res.render("entradas/entradas_list", {title: "Lista de Entradas", entradas_list})
     })
 }
 
@@ -188,7 +188,7 @@ exports.entrada_update_get = async (req, res) => {
   })
   const insumos = await InventarioSchema.find({})
   const unidades = await UnidadesSchema.find({})
-  res.render("recetas_form", {
+  res.render("entradas/recetas_form", {
     title: receta.nombre,
     receta,
     ingredientes,
